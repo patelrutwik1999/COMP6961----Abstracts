@@ -1,0 +1,73 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+
+\titleformat{\chapter}{\bf\huge}{\thechapter}{20pt}{\huge\vspace{-.5em}}
+
+\begin{document}
+\title{COMP	6961 Graduate Seminar Abstracts}
+\author{Summarized by: Rutwikkumar Sunilkumar Patel (40160646)}
+\date{August 14, 2021}
+\maketitle
+
+\begin{center}
+    \textbf{Seminar 1: End-to-end Representation Learning for 3D Reconstruction}
+    
+    \vspace{1em}
+    Original Presenter: Soroush Saryazdi
+    
+    \vspace{2em}
+    \textbf{Abstract by Rutwik Patel}
+\end{center}
+
+The seminar was about a research exercise in generating 3D models from 2D images. He explained some important aspects of a 3D model and a 2D image, for differentiating the models and images. Having all properties, we can generate a 2D image from any 3D model. This is called “Physical Based Rendering”. It will be very helpful for robotics tasks as one can build a map representation independent of lighting conditions if you have the material properties. This study in robotics is referred to as Simultaneous Localization and Mapping, abbreviated as SLAM. He shows a picture of a system named dense SLAM which takes RGB/RGB-D as input and explains differentiable SLAM. He demonstrated his first experiment and its result in detail with all necessary figures. He explained “Gradslam”, an open-source library for SLAM. He depicted some future use-cases for differentiable SLAM.\\
+
+Disentangled Rendering Loss was his second line of work where he explains the rendering loss while recovering material parameters from the image using deep learning. Also, he iterates various drawbacks of Rendering Loss. Because of rendering loss, in overfitting experiment where re-rendering of ground truth materials looks quite reasonable but individual ground truth materials and a deep neural network that was overfitted on the single sample are very different. \\
+
+In the last part of the research, Scan2Material, he pieces everything together that was discussed before where he shows the pipeline diagram and explains it. The overfitting experiment's result shows how the parameter is being learned and predicted. He proposed the use of Rendering Loss for non-flat geometry. Dataset was the biggest challenge since no free dataset had geometry information and material appearance. He found a dataset named Hypersim which had many required attributes, he just added material appearance parameters to it. But the difficulties he observes were the massive amount of data and dealing with rendering hacks. In the end, he summarizes his presentation by showing a glimpse of all three parts of the research.\\
+
+\newpage
+\begin{center}
+    \textbf{Seminar 2: The Untangling Java Code Changes}
+        
+    \vspace{1em}
+    Original presenter: Xiaowei Chen
+   
+    \vspace{2em}
+    \textbf{Abstract by Rutwik Patel}
+\end{center}
+
+Xiaowei Chen started her presentation by explaining the importance of code review. She explains the demerits of tangle commit and explained why untangling is important. She tells the importance of pull requests, abbreviated as PR, and explains tangled PR by giving its example.\\
+
+The prevalence of tangled pull requests can be known by extracting the dataset and then doing analysis manually. She extracted PRs, commits from 8 popular Java repositories. She talks about Multi-Commit Pull Request, to identify manually if a pull request is tangled, she builds the ground truth by performing some steps. She tells about making task definitions inside PRs jointly. She then differentiates good and bad practices inside tangled PR, by giving examples. She found that single multi-commit PRs are prevalent among which 47\% were tangled, 75\% were due to good practice, and 25\% were due to bad practice.  \\
+
+The approach to predict effectively whether a pull request is tangled or not is automatic. It is a binary classification problem, where she collected a set of relevant metrics and two classifiers to train models namely, Random Forest and Logistic Regression. In this dataset, she only considered bad practice tangled multi-commit PRs. She then split the datasets randomly into two parts, namely the training and testing dataset. She found that the model train by random forest performs best, with an AUC value of 0.87 followed by logistic regression, having an AUC value of 0.85. So, the model can automatically identify tangled multi-commit PRs with an AUC of 0.87. Also, the more AST node operations and functions a PR touched, the more likely that PR is tangled. \\
+
+Effectively predicting the tasks of tangled pull requests, the last part, here she describes a tool that can untangle multi-commit PR automatically whose main aim is to predict whether two lines of code changes belong to the same task, followed by, clustering the code changes pair that should be together, she gets several groups of code changes using a set of metrics to determine it. The model can identify code changes in the same task with an AUC of 0.74. Two lines of code changes are in the same file and the functions they belonged to have a call/being called relationship, the more likely that they belong to the same task. \\
+
+She concludes her presentation by entitling some of the contributions. She achieved a high AUC value of 0.87 to identify tangled multi-commit PRs. She then discusses her future work, which includes developing a tool to untangle code changes automatically and to study the research in other programming languages other than JAVA.  \\
+
+\newpage
+\begin{center}
+    \textbf{Seminar 3: Using Visualization and Modelling to improve pre-surgical decision-making in breast reconstruction surgery.}
+        
+    \vspace{1em}
+    Original presenter: Sarah Amini
+       
+    \vspace{2em}
+    \textbf{Abstract by Rutwik Patel}
+\end{center}
+
+Sarah Amini, a master’s student at Concordia University, started her seminar by explaining breast reconstruction surgery and then the implementation for the following procedure. She talks about Mastectomy surgery, an important one, which is done before reconstruction surgery. She highlights some statistical data of affected populations in the world where it was found that many are dissatisfied with the reconstructed breasts. \\
+
+To overcome these issues, she suggested two parts, which the first part is Augmented Reality abbreviated as AR. Mastectomy surgical planning using the HoloLens. She initially explains the augmented reality, with its use-cases in the medical field and proposed a solution where surgeons will be using HoloLens software. She has done system evaluation on 13 subjects, where usability was tested using Software Usability Scale (SUS), in which 68 or more score was considered usable. The SUS scores were great, with a median of 70, which means it passed the test. 12 users liked it with an average score of 4.23 out of 5, however, some users found it complex and hard to use or feel the need for a technical person to be present. The system passed the SUS; however, HoloLens is not the best choice of platform. \\
+
+3D modeling and visualization pipeline has been used, to overcome the previous part of the research. She explains finite element modeling, which allows obtaining the approximate solutions to the larger problem at hand and one can observe the behavior of smaller elements when gravity is applied to them.  The pipeline flows start with creating a 3d model of the patient from pre-operative MRI and then by comparing it with the patient’s model, the best implant can be determined. She precisely illustrates the whole pipeline process with help of process images. Finite elements for the Biomechanics server have been used by her for the simulation part. In the user study of the system, 7 raters had participated in the study. Implant models were shown to the participants through various online meeting platforms because of pandemic. She shows the result with the help of a bar chart graph, in which 83.3\% raters have agreed on at least one implant from available options.\\
+
+She concluded that the pre-operative planning process for breast reconstruction surgery can be improved by using AR for better visualization. Also, the automatic method to find a perfect match increases its efficiency. She shows her future work which includes having more implants, use AR on mobile devices for visualization, and many more.  
+
+\end{document}
